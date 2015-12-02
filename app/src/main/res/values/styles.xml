@@ -1,0 +1,35 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:button">@style/BtnStyle</item>
+    </style>
+
+    <style name="BtnStyle" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/btn_text</item>
+    </style>
+    <style name="BtnStyle.WithBg" parent="BtnStyle">
+        <item name="android:background">@drawable/btn_bg</item>
+    </style>
+
+    <style name="BtnStyle.NoBorder" parent="BtnStyle">
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="FragStyle">
+        <item name="android:background">@color/colorFragBg</item>
+    </style>
+    
+    <style name="InputText" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_marginTop">@dimen/btn_space</item>
+        <item name="android:layout_marginBottom">@dimen/btn_space</item>
+        <item name="android:background">@drawable/input_text_bg</item>
+        <item name="android:textColorHint">@color/colorInputTextHint</item>
+        <item name="android:textColor">@color/color_input_text</item>
+    </style>
+
+</resources>

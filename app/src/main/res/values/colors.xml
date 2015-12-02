@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorBtnTextNormal">#D2D3D6</color>
+    <color name="colorBtnTextSelected">#FAD0C2</color>
+    <color name="colorBtnBgNormal">#454E5A</color>
+    <color name="colorBtnBgSelected">#F26522</color>
+
+    <color name="colorFragBg">#303B4A</color>
+    <color name="colorInputTextHint">#717B82</color>
+    <color name="colorInputTextFocus">#FB671E</color>
+    <color name="colorInputTextBgNormal">#2C3644</color>
+    <color name="colorInputTextBgFocus">#FB671E</color>
+</resources>

@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">ParseDemo</string>
+    <string name="sign_in">Sign In</string>
+    <string name="or_skip">Or Skip</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="cancel">Cancel</string>
+    <string name="forgot_pass">Forgot password?</string>
+    <string name="signing_in">Signing in</string>
+    <string name="signed_in">Signed in.</string>
+    <string name="email_invalid">Email is invalid.</string>
+    <string name="signing_up">Signing up.</string>
+    <string name="signed_up">Sign up success.</string>
+    <string name="submit">Submit</string>
+    <string name="reset_pass_hint">Please enter your email so we can send you link to reset password</string>
+    <string name="reseting_pass">Reseting password.</string>
+    <string name="reset_success">Email sent.</string>
+    <string name="popular_title">Popular</string>
+    <string name="most_rated_title">Most Rated</string>
+    <string name="my_fav_title">My Fav</string>
+    <string name="review_title">Review</string>
+    <string name="detail_title">Detail</string>
+    <string name="trailers">Trailers</string>
+</resources>
