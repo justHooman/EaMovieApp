@@ -50,9 +50,9 @@ public class ContentFrag extends BaseActionBarFrag implements View.OnClickListen
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btnUser) {
-            if (ParseUser.getCurrentUser() != null) {
-                ParseUser.logOut();
-            }
+//            if (ParseUser.getCurrentUser() != null) {
+//                ParseUser.logOut();
+//            }
         }
     }
 }

@@ -25,7 +25,7 @@ import com.parse.ParseObject;
  * Created by minht.truong on 10/29/15.
  */
 @ParseClassName("Review")
-public class Review extends ParseObject {
+public class Review {
     @JsonProperty("id")
     private String mId;
 

@@ -32,10 +32,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.minhttruong.parsedemo.R;
-import com.example.minhttruong.parsedemo.base.BaseFrag;
 import com.example.minhttruong.parsedemo.config.PicassoConfig;
 import com.example.minhttruong.parsedemo.config.UrlConfig;
-import com.example.minhttruong.parsedemo.model.Movie;
 import com.example.minhttruong.parsedemo.model.Trailer;
 import com.example.minhttruong.parsedemo.model.TrailerRRO;
 import com.example.minhttruong.parsedemo.utils.Utils;
@@ -44,10 +42,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by minht.truong on 10/30/15.
@@ -62,10 +59,9 @@ public class DetailFrag extends AbsMovieFrag {
         loadMovie();
         View v = inflater.inflate(R.layout.detail_frag, container, false);
         if (mMovie != null) {
-            Context ctx = container.getContext();
             ImageView ivPoster = (ImageView) v.findViewById(R.id.iv_poster);
             Utils.updateImageSize(ivPoster);
-            PicassoConfig.createPosterRequest(ctx, mMovie.getPoster()).into(ivPoster);
+            PicassoConfig.createPosterRequest(mMovie.getPoster()).into(ivPoster);
             RatingBar rb = (RatingBar) v.findViewById(R.id.rbRate);
             rb.setRating(mMovie.getRating());
             Utils.setText(v.findViewById(R.id.tvName), mMovie.getTitle());
@@ -88,8 +84,8 @@ public class DetailFrag extends AbsMovieFrag {
         Call<TrailerRRO> call = UrlConfig.getRetrofitService().getTrailers(mMovie.getId());
         call.enqueue(new Callback<TrailerRRO>() {
             @Override
-            public void onResponse(Response<TrailerRRO> response, Retrofit retrofit) {
-                if (response != null && response.isSuccess()) {
+            public void onResponse(Call<TrailerRRO> call, Response<TrailerRRO> response) {
+                if (response != null && response.isSuccessful()) {
                     TrailerRRO res = response.body();
                     if (res != null) {
                         mAdapter.setItems(res.getResults());
@@ -99,8 +95,9 @@ public class DetailFrag extends AbsMovieFrag {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<TrailerRRO> call, Throwable t) {
                 Log.d("TEST", "request trailer fail");
+                Log.d("TEST", Log.getStackTraceString(t));
             }
         });
     }
@@ -135,11 +132,10 @@ public class DetailFrag extends AbsMovieFrag {
         @Override
         public void onBindViewHolder(TrailerHolder holder, int position) {
             Trailer trailer = mItems.get(position);
-            Context ctx = holder.itemView.getContext();
-            Picasso.with(ctx).cancelRequest(holder.mIvThumbnail);
+            Picasso.get().cancelRequest(holder.mIvThumbnail);
             holder.itemView.setTag(position);
             if (trailer != null) {
-                PicassoConfig.createTrailerThumbnailRequest(ctx, trailer.getKey()).into(holder.mIvThumbnail);
+                PicassoConfig.createTrailerThumbnailRequest(trailer.getKey()).into(holder.mIvThumbnail);
                 holder.mTvName.setText(trailer.getName());
             }
         }

@@ -21,11 +21,11 @@ import com.example.minhttruong.parsedemo.model.ReviewRRO;
 import com.example.minhttruong.parsedemo.model.TrailerRRO;
 import com.example.minhttruong.parsedemo.utils.JsonUtil;
 
-import retrofit.Call;
-import retrofit.JacksonConverterFactory;
-import retrofit.Retrofit;
-import retrofit.http.GET;
-import retrofit.http.Path;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.jackson.JacksonConverterFactory;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 /**
  * Created by minht.truong on 10/27/15.
@@ -75,13 +75,11 @@ public class UrlConfig {
     }
 
     public static RetrofitUrl getRetrofitService() {
-        RetrofitUrl ret = null;
         Retrofit request = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(JacksonConverterFactory.create(JsonUtil.configMapper()))
                 .build();
-        ret = request.create(RetrofitUrl.class);
-        return ret;
+        return request.create(RetrofitUrl.class);
     }
 
     public static final String BASE_IMAGE_URL = "http://image.tmdb.org/t/p/";

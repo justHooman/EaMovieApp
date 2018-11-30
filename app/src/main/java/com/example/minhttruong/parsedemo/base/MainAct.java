@@ -54,11 +54,11 @@ public class MainAct extends AppCompatActivity {
 
     private void setContent() {
         setContentView(R.layout.main_act);
-        if (ParseUser.getCurrentUser() == null) {
-            swapFrag(FragOption.replace(MAIN_CONTENT_HOLDER, WelcomeFrag.class));
-        } else {
+//        if (ParseUser.getCurrentUser() == null) {
+//            swapFrag(FragOption.replace(MAIN_CONTENT_HOLDER, WelcomeFrag.class));
+//        } else {
             swapFrag(FragOption.replace(MAIN_CONTENT_HOLDER, ContentFrag.class));
-        }
+//        }
     }
 
     public void swapFrag(FragOption fragOption) {

@@ -16,13 +16,10 @@
 
 package com.example.minhttruong.parsedemo.feature.content;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -44,10 +41,9 @@ import com.squareup.picasso.Picasso;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by minht.truong on 10/29/15.
@@ -112,10 +108,10 @@ public class MoviesTab extends BaseFrag implements SwipeRefreshLayout.OnRefreshL
         Call<MovieRRO> call = getMoviesCall();
         call.enqueue(new Callback<MovieRRO>() {
             @Override
-            public void onResponse(Response<MovieRRO> response, Retrofit retrofit) {
+            public void onResponse(Call<MovieRRO> call, Response<MovieRRO> response) {
                 updateRefreshState(false);
                 // TODO: 10/29/15 check fail code
-                if (getMainAct() != null && isVisible() && response.isSuccess()) {
+                if (getMainAct() != null && isVisible() && response.isSuccessful()) {
                     mAdapter.setItems(response.body().getResults());
                     mAdapter.notifyDataSetChanged();
                 }
@@ -123,8 +119,9 @@ public class MoviesTab extends BaseFrag implements SwipeRefreshLayout.OnRefreshL
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<MovieRRO> call, Throwable t) {
                 Log.d("TEST", "load fail");
+                Log.d("TEST", Log.getStackTraceString(t));
                 updateRefreshState(false);
             }
         });
@@ -189,12 +186,11 @@ public class MoviesTab extends BaseFrag implements SwipeRefreshLayout.OnRefreshL
 
         @Override
         public void onBindViewHolder(MovieItemHolder holder, int position) {
-            Context ctx = holder.mIvPoster.getContext();
-            Picasso.with(ctx).cancelRequest(holder.mIvPoster);
+            Picasso.get().cancelRequest(holder.mIvPoster);
             Movie movie = mItems.get(position);
             ((ItemClickListener) holder.itemView.getTag()).mPosition = position;
             if (movie != null) {
-                PicassoConfig.createPosterRequest(ctx, movie.getPoster()).into(holder.mIvPoster);
+                PicassoConfig.createPosterRequest(movie.getPoster()).into(holder.mIvPoster);
                 holder.mTvTitle.setText(movie.getTitle());
             } else {
                 holder.mTvTitle.setText(null);

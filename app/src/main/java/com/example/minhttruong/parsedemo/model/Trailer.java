@@ -26,7 +26,7 @@ import com.parse.ParseObject;
  * Created by minht.truong on 10/29/15.
  */
 @ParseClassName("Trailer")
-public class Trailer extends ParseObject {
+public class Trailer {
     @JsonProperty("id")
     private String mId;
     @JsonProperty("key")

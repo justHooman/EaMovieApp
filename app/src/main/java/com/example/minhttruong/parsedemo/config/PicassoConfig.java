@@ -18,7 +18,6 @@ package com.example.minhttruong.parsedemo.config;
 
 import android.content.Context;
 
-import com.example.minhttruong.parsedemo.R;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 
@@ -27,12 +26,12 @@ import com.squareup.picasso.RequestCreator;
  */
 public class PicassoConfig {
 
-    public static RequestCreator createPosterRequest(Context ctx, String path) {
-        return Picasso.with(ctx).load(UrlConfig.getImageUrl(path)).fit();
+    public static RequestCreator createPosterRequest(String path) {
+        return Picasso.get().load(UrlConfig.getImageUrl(path)).fit();
     }
 
-    public static RequestCreator createTrailerThumbnailRequest(Context ctx, String path) {
-        return Picasso.with(ctx).load(UrlConfig.createYoutubeThumbnailUrl(path));
+    public static RequestCreator createTrailerThumbnailRequest(String path) {
+        return Picasso.get().load(UrlConfig.createYoutubeThumbnailUrl(path));
     }
 
 }

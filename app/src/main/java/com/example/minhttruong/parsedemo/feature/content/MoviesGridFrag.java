@@ -22,7 +22,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +32,6 @@ import com.example.minhttruong.parsedemo.base.BaseFrag;
 import com.example.minhttruong.parsedemo.base.FragOption;
 import com.example.minhttruong.parsedemo.model.Movie;
 import com.example.minhttruong.parsedemo.utils.Utils;
-import com.squareup.okhttp.internal.Util;
 
 /**
  * Created by minht.truong on 10/29/15.

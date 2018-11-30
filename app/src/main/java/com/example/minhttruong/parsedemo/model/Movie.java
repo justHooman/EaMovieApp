@@ -30,7 +30,7 @@ import com.parse.ParseObject;
  * Created by minht.truong on 10/29/15.
  */
 @ParseClassName("Movie")
-public class Movie extends ParseObject implements Parcelable {
+public class Movie implements Parcelable {
     @JsonProperty("id")
     private long mId;
     @JsonProperty("original_title")

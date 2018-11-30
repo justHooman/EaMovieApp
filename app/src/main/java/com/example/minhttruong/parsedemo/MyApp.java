@@ -18,18 +18,8 @@ package com.example.minhttruong.parsedemo;
 
 import android.app.Application;
 import android.util.DisplayMetrics;
-import android.util.Log;
 
-import com.example.minhttruong.parsedemo.config.Constant;
 import com.example.minhttruong.parsedemo.config.UrlConfig;
-import com.example.minhttruong.parsedemo.model.Movie;
-import com.example.minhttruong.parsedemo.model.Review;
-import com.example.minhttruong.parsedemo.model.Trailer;
-import com.parse.Parse;
-import com.parse.ParseObject;
-import com.parse.ParseUser;
-
-import retrofit.http.Url;
 
 /**
  * Created by minht.truong on 10/26/15.
@@ -44,11 +34,16 @@ public class MyApp extends Application {
         UrlConfig.setImageSize(dm.widthPixels / getResources().getInteger(R.integer.num_of_columns) -
                 2 * getResources().getDimensionPixelSize(R.dimen.btn_space));
 
-        ParseObject.registerSubclass(Movie.class);
-        ParseObject.registerSubclass(Review.class);
-        ParseObject.registerSubclass(Trailer.class);
-        Parse.enableLocalDatastore(getApplicationContext());
-        Parse.initialize(this, Constant.PARSE_APP_ID, Constant.PARSE_CLIENT_KEY);
+//        ParseObject.registerSubclass(Movie.class);
+//        ParseObject.registerSubclass(Review.class);
+//        ParseObject.registerSubclass(Trailer.class);
+//        Parse.enableLocalDatastore(getApplicationContext());
+
+//        Parse.initialize(new Parse.Configuration.Builder(this)
+//                .applicationId(Constant.PARSE_APP_ID)
+//                .clientKey(Constant.PARSE_CLIENT_KEY)
+//                .server("")
+//                .build());
 //        ParseUser.enableAutomaticUser();
     }
 }
